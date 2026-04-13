@@ -9,6 +9,11 @@
   --edge: #2a3f78;
   --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
   --radius: 18px;
+  --topbar-offset: 11.5rem;
+}
+
+html {
+  scroll-padding-top: var(--topbar-offset);
 }
 
 * {
