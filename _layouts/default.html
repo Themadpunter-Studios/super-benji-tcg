@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+    <link rel="icon" type="image/png" href="{{ '/assets/images/super-benji-tcg.png' | relative_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  </head>
+  <body>
+    <header class="site-top">
+      <nav class="nav">
+        <a class="nav__brand" href="{{ '/' | relative_url }}">
+          <img src="{{ '/assets/images/super-benji-tcg.png' | relative_url }}" alt="Super Benji TCG logo">
+        </a>
+        <div class="nav__links">
+          <a href="{{ '/#about' | relative_url }}">About</a>
+          <a href="{{ '/#lore' | relative_url }}">Lore</a>
+          <a href="{{ '/#how-to-play' | relative_url }}">How to Play</a>
+          <a href="{{ '/rules.html' | relative_url }}">Rules</a>
+          <a href="{{ '/gallery.html' | relative_url }}">Card Gallery</a>
+        </div>
+      </nav>
+    </header>
+    {{ content }}
+    <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+  </body>
+</html>

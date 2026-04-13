@@ -1,0 +1,8 @@
+- id: base-set-2026
+  name: Base Set 2026
+  path: sets/Base Set 2026/fronts
+  tsv: sets/Base Set 2026/Base Set 2026.tsv
+  total_cards: 48
+  code_prefix: ""
+  code_padding: 2
+  description: The foundational release of Super Benji TCG, featuring iconic characters, rival forces, and key locations from Benji Island.

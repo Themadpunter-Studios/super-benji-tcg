@@ -1,0 +1,9 @@
+title: Super Benji TCG
+description: Official fan site for the Super Benji Trading Card Game.
+baseurl: ""
+url: ""
+markdown: kramdown
+permalink: pretty
+exclude:
+  - Gemfile
+  - Gemfile.lock

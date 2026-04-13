@@ -1,0 +1,61 @@
+---
+layout: default
+title: Card Gallery
+permalink: /gallery.html
+---
+
+<header class="hero" id="top">
+  <div class="hero__bg-shape hero__bg-shape--left" aria-hidden="true"></div>
+  <div class="hero__bg-shape hero__bg-shape--right" aria-hidden="true"></div>
+  <section class="hero__content">
+    <p class="eyebrow">Collection Browser</p>
+    <h1>Card Gallery</h1>
+    <p class="hero__lead">
+      Browse cards by set and click any card to see a full-size preview with detailed metadata and card text.
+    </p>
+  </section>
+</header>
+
+<main>
+  <section class="section" id="gallery">
+    <div class="section__heading">
+      <p class="eyebrow">Collection</p>
+      <h2>Sort By Set</h2>
+    </div>
+
+    <div class="gallery-controls" aria-label="Gallery filters">
+      <label for="set-filter">Set</label>
+      <select id="set-filter">
+        {% for set in site.data.sets %}
+        <option value="{{ set.id }}">{{ set.name }}</option>
+        {% endfor %}
+      </select>
+      <label for="card-search">Search</label>
+      <input id="card-search" type="search" placeholder="Name, card #, or code" autocomplete="off">
+    </div>
+
+    <div class="set-description" id="set-description"></div>
+    <div class="gallery-grid" id="gallery-grid" aria-live="polite"></div>
+  </section>
+</main>
+
+<div class="modal" id="card-modal" aria-hidden="true" role="dialog" aria-label="Card preview">
+  <button class="modal__close" id="card-modal-close" aria-label="Close card preview">Close</button>
+  <div class="card-view">
+    <div class="card-view__media">
+      <img id="card-modal-image" alt="Expanded card preview">
+    </div>
+    <aside class="card-view__details">
+      <p class="eyebrow">Card Data</p>
+      <h3 id="card-modal-title"></h3>
+      <p id="card-modal-subtitle" class="card-view__subtitle"></p>
+      <p><strong>Type:</strong> <span id="card-modal-type"></span></p>
+      <p><strong>Rarity:</strong> <span id="card-modal-rarity"></span></p>
+      <div id="card-modal-text" class="card-view__text"></div>
+    </aside>
+  </div>
+</div>
+
+<script id="sets-json" type="application/json">
+{{ site.data.sets | jsonify }}
+</script>
