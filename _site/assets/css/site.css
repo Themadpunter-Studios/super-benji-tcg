@@ -383,10 +383,11 @@ main {
   position: fixed;
   inset: 0;
   display: none;
-  place-items: center;
+  align-items: start;
+  justify-items: center;
   background: rgba(2, 6, 16, 0.84);
-  padding: 1rem;
-  z-index: 40;
+  padding: 5.25rem 1rem 1rem;
+  z-index: 60;
 }
 
 .modal.is-open {
@@ -438,10 +439,30 @@ main {
   line-height: 1.45;
 }
 
+.card-view__text p {
+  margin: 0 0 0.65rem;
+}
+
+.card-view__text p:last-child {
+  margin-bottom: 0;
+}
+
 .inline-icon {
   height: 1em;
   width: auto;
   vertical-align: middle;
+}
+
+.card-view__close {
+  margin-top: 1rem;
+  border: 1px solid var(--edge);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--ink);
+  background: rgba(14, 18, 30, 0.78);
+  cursor: pointer;
 }
 
 .modal__close {

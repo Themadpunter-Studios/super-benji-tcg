@@ -79,6 +79,7 @@
   const modalRarity = document.getElementById("card-modal-rarity");
   const modalText = document.getElementById("card-modal-text");
   const modalClose = document.getElementById("card-modal-close");
+  const modalCloseBottom = document.getElementById("card-modal-close-bottom");
 
   if (!setsNode || !setFilter || !searchInput || !gallery || !setDescription) {
     return;
@@ -188,10 +189,22 @@
     return cards;
   }
 
-  function withInlineIcons(input) {
-    return input.replace(/\{icons\/([^}]+)\}/g, (match, filename) => {
-      return `<img class="inline-icon" src="icons/${filename}" alt="${filename}">`;
-    });
+  function escapeHtml(input) {
+    return input
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function toSimpleMarkdownHtml(input) {
+    return input
+      .replace(/(^|[^*])\*\*([^*]+)\*\*/g, "$1<strong>$2</strong>")
+      .replace(/(^|[^*])\*([^*]+)\*/g, "$1<em>$2</em>")
+      .replace(/(^|[^_])_([^_]+)_/g, "$1<em>$2</em>")
+      .replace(/`([^`]+)`/g, "<code>$1</code>")
+      .replace(/\[(.+?)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
   }
 
   function formatCardText(input) {
@@ -199,8 +212,61 @@
       return "";
     }
 
-    const withBreaks = input.replace(/\s\/\s/g, "<br>");
-    return withInlineIcons(withBreaks);
+    const shorthandIcons = {
+      action: "WildAction.png",
+      wild: "WildAction.png",
+      plus: "PlusAction.png",
+      minus: "MinusAction.png",
+      question: "QuestionAction.png",
+      hero: "HAction.png",
+      villain: "VAction.png",
+      haction: "HAction.png",
+      vaction: "VAction.png",
+      actionlogo: "actionLogo2.png",
+      artifact: "artifactLogo.png",
+      location: "locationLogo2.png"
+    };
+
+    function resolveIconFilename(tag) {
+      const normalized = tag.trim().toLowerCase();
+      if (!normalized) {
+        return "";
+      }
+      if (normalized.startsWith("icons/")) {
+        return tag.trim().slice(6);
+      }
+      if (shorthandIcons[normalized]) {
+        return shorthandIcons[normalized];
+      }
+      if (normalized.endsWith(".png")) {
+        return tag.trim();
+      }
+      return "";
+    }
+
+    const iconTokens = [];
+    const withIconTokens = input.replace(/\{([^{}]+)\}/g, (match, tag) => {
+      const filename = resolveIconFilename(tag);
+      if (!filename) {
+        return match;
+      }
+      const token = `@@ICON${iconTokens.length}@@`;
+      iconTokens.push(`<img class="inline-icon" src="icons/${filename}" alt="${filename}">`);
+      return token;
+    });
+
+    const escaped = escapeHtml(withIconTokens);
+    const withParagraphs = escaped
+      .replace(/\s\/\s/g, "\n")
+      .split(/\n{2,}/)
+      .map((paragraph) => paragraph.replace(/\n/g, "<br>"))
+      .map((paragraph) => `<p>${paragraph}</p>`)
+      .join("");
+
+    const markdownHtml = toSimpleMarkdownHtml(withParagraphs);
+    return iconTokens.reduce((result, iconHtml, index) => {
+      return result.replaceAll(`@@ICON${index}@@`, iconHtml);
+    }, markdownHtml);
   }
 
   function openModal(card) {
@@ -304,6 +370,7 @@
   searchInput.addEventListener("input", render);
 
   modalClose?.addEventListener("click", closeModal);
+  modalCloseBottom?.addEventListener("click", closeModal);
   modal?.addEventListener("click", (event) => {
     if (event.target === modal) {
       closeModal();
