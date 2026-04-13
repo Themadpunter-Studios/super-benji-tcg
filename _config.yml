@@ -1,7 +1,7 @@
 title: Super Benji TCG
 description: Official fan site for the Super Benji Trading Card Game.
 baseurl: ""
-url: ""
+url: "https://tcg.superbenji.themadpunter.tech"
 markdown: kramdown
 permalink: pretty
 exclude:
