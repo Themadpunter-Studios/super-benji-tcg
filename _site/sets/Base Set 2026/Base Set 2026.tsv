@@ -47,3 +47,5 @@ Copies	Nickname	card_background	cardname	cardtypeimage	cardimage	cardimage style
 2			Crystal	WildAction.png	Emmy.png		Token Character - Crystal	1/1	TOKEN	BS26	TOKEN
 1		Chloe.png	Cheese	WildAction.png	-	{outlineStyle:none} {boxShadow:none}	Token Food - Cheese	Destroy this card: Gain 2 life.	TOKEN	BS26	TOKEN
 2		Dr Zach and Jack. Zach and Jack	Medication	WildAction.png	-	{outlineStyle:none} {boxShadow:none}	Token Food - Medication	Destroy this card: Target character gains +0/+4 until end of turn.	TOKEN	BS26	TOKEN
+1		Noah Promo.png	Noah, Professor of Nuclear Sciences	QuestionAction.png	-	{outlineStyle:none} {boxShadow:none}	Unique Character - Human Hero Scientist	Actions: {icons/QuestionAction.png} / *Quantum Research* - Once per turn, you may draw 1 card. / *{icons/QuestionAction.png}: Teach* - Target character gains -1/+1 until end of turn. / 3/3	PROMO	BS26	Special
+1		Banana Gem Alt Art.png	Banana Gem	artifactLogo.png	-	{outlineStyle:none} {boxShadow:none}	Unique Artifact - Gem	Actions: {icons/WildAction.png}	PROMO	BS26	Special
