@@ -1,0 +1,242 @@
+---
+layout: default
+title: How to Play Tutorial - Super Benji Trading Card Game
+description: Learn Super Benji TCG with a quick interactive slideshow covering setup, turns, actions, combat, and winning.
+permalink: /tutorial.html
+---
+
+<header class="hero" id="top">
+  <div class="hero__bg-shape hero__bg-shape--left" aria-hidden="true"></div>
+  <div class="hero__bg-shape hero__bg-shape--right" aria-hidden="true"></div>
+
+  <section class="hero__content">
+    <p class="eyebrow">Learn Fast</p>
+    <h1>How To Play In 12 Slides</h1>
+    <p class="hero__lead">
+      This short walkthrough teaches the game step by step. We use real cards so you can see what each rule looks like
+      during play.
+    </p>
+  </section>
+</header>
+
+<main>
+  <section class="section section--highlight tutorial" id="tutorial-slideshow" aria-label="How to play tutorial slideshow">
+    <div class="tutorial__topbar">
+      <p class="eyebrow">Interactive Tutorial</p>
+      <p class="tutorial__counter" id="tutorial-counter" aria-live="polite"></p>
+    </div>
+
+    <div class="tutorial__progress" aria-hidden="true">
+      <span id="tutorial-progress-bar"></span>
+    </div>
+
+    <article class="tutorial-slide" id="tutorial-slide-1" data-slide hidden>
+      <div class="tutorial-slide__content">
+        <h2>1. Your Goal</h2>
+        <p>Your goal is simple: lower your opponent's health to 0.</p>
+        <ul>
+          <li>You and your opponent both start with 20 health.</li>
+          <li>Your cards let you attack, block, and use effects.</li>
+          <li>When a player's health becomes 0, the game ends right away.</li>
+        </ul>
+      </div>
+      <figure class="tutorial-slide__card">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/00.png' | relative_url }}" alt="Benji, Hero of Benji Island card">
+      </figure>
+    </article>
+
+    <article class="tutorial-slide" id="tutorial-slide-2" data-slide hidden>
+      <div class="tutorial-slide__content">
+        <h2>2. Know Card Roles</h2>
+        <p>Each card type has a different job.</p>
+        <ul>
+          <li><strong>Characters</strong> can attack and block.</li>
+          <li><strong>Actions</strong> happen once, then usually go to discard.</li>
+          <li><strong>Locations</strong> and <strong>Artifacts</strong> stay in play and keep helping you.</li>
+        </ul>
+      </div>
+      <figure class="tutorial-slide__card tutorial-slide__card--row">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/13.png' | relative_url }}" alt="Targeted Nuke action card">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/25.png' | relative_url }}" alt="Benji City location card">
+      </figure>
+    </article>
+
+    <article class="tutorial-slide" id="tutorial-slide-3" data-slide hidden>
+      <div class="tutorial-slide__content">
+        <h2>3. Start Of Game Setup</h2>
+        <p>Get the game ready before the first turn.</p>
+        <ul>
+          <li>Shuffle your deck and draw your opening hand of 3 cards.</li>
+          <li>Set both players to 20 health.</li>
+          <li>Pick who goes first, then start with an empty board.</li>
+        </ul>
+      </div>
+      <figure class="tutorial-slide__card tutorial-slide__card--row">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/28.png' | relative_url }}" alt="Benji City Citizen card">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/27.png' | relative_url }}" alt="Banana Soldier card">
+      </figure>
+    </article>
+
+    <article class="tutorial-slide" id="tutorial-slide-4" data-slide hidden>
+      <div class="tutorial-slide__content">
+        <h2>4. Building Your Deck</h2>
+        <p>A deck has 27 cards.</p>
+        <ul>
+          <li>You can use up to 3 copies of the same card in your deck.</li>
+          <li>If a card's type line includes <strong>Unique</strong>, you can only use 1 copy of that card.</li>
+          <li>Deck building is about choosing your 27 cards before the game starts.</li>
+        </ul>
+      </div>
+      <figure class="tutorial-slide__card tutorial-slide__card--row">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/00.png' | relative_url }}" alt="Example card for deck building">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/34.png' | relative_url }}" alt="Unique character card example">
+      </figure>
+    </article>
+
+    <article class="tutorial-slide" id="tutorial-slide-5" data-slide hidden>
+      <div class="tutorial-slide__content">
+        <h2>5. On Your Turn</h2>
+        <p>On your turn, you can play as many cards as you want from your hand.</p>
+        <ul>
+          <li>All cards you own give you actions to use.</li>
+          <li>If a card is in your hand, you can play it - no actions needed.</li>
+          <li>You can play any card type this way: Character, Action, Location, or Artifact.</li>
+          <li>You can play as many cards as you want during your turn.</li>
+          <li>Cards give you actions to use immediately, and then again at the start of every turn.</li>
+        </ul>
+      </div>
+      <figure class="tutorial-slide__card tutorial-slide__card--row">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/17.png' | relative_url }}" alt="Scarlette's Stand-up Comedy action card">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/30.png' | relative_url }}" alt="Jean, Original Hero character card">
+      </figure>
+    </article>
+
+    <article class="tutorial-slide" id="tutorial-slide-6" data-slide hidden>
+      <div class="tutorial-slide__content">
+        <h2>6. Use Actions For Abilities</h2>
+        <p>You spend actions when using abilities that show action symbols.</p>
+        <ul>
+          <li>Look at the symbols shown in an ability's text.</li>
+          <li>Spend matching symbols from your action pool to activate that ability.</li>
+          <li>Wild action symbols can pay for any one required symbol.</li>
+          <li>If an ability doesn't have any action symbols, you don't need to spend any actions to use it.</li>
+        </ul>
+      </div>
+      <figure class="tutorial-slide__card">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/12.png' | relative_url }}" alt="Targeted Nuke card">
+      </figure>
+    </article>
+
+    <article class="tutorial-slide" id="tutorial-slide-7" data-slide hidden>
+      <div class="tutorial-slide__content">
+        <h2>7. Parts Of A Card</h2>
+        <p>Each card has parts that tell you what it is and what it does.</p>
+        <ul>
+          <li><strong>Name</strong>: the card title at the top.</li>
+          <li><strong>Type line</strong>: says Character, Action, Location, or Artifact, as well as more information about the card.</li>
+          <li><strong>Actions</strong>: Shows how many actions the card gives you when it is played, and at the start of your turn.</li>
+          <li><strong>Rules text</strong>: explains effects, abilities, and costs.</li>
+          <li><strong>Keywords</strong>: short rule words like Haste, Flying, and Reach.</li>
+          <li><strong>Stats</strong>: Character cards show attack and health numbers at the bottom of the card text in the format Attack/Health.</li>
+        </ul>
+      </div>
+      <figure class="tutorial-slide__card">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/34.png' | relative_url }}" alt="Benji, Political Leader card showing card parts">
+      </figure>
+    </article>
+
+    <article class="tutorial-slide" id="tutorial-slide-8" data-slide hidden>
+      <div class="tutorial-slide__content">
+        <h2>8. Attack Phase: Declaring Attacks</h2>
+        <p>Pick which characters will attack this turn.</p>
+        <ul>
+          <li>When a character attacks, it becomes exhausted. Characters can't attack or block if they are exhausted.</li>
+          <li>Attacking cards will deal damage to your opponent's health unless blocked.</li>
+          <li>Characters cannot attack on the turn they are played unless they have <strong>Haste</strong>.</li>
+          <li>After attacks are declared, the defending player chooses blockers.</li>
+        </ul>
+      </div>
+      <figure class="tutorial-slide__card tutorial-slide__card--row">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/03.png' | relative_url }}" alt="Dr. Banana, Evil Mastermind card">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/16.png' | relative_url }}" alt="Scarlette, Tiny Prizefighter card">
+      </figure>
+    </article>
+
+    <article class="tutorial-slide" id="tutorial-slide-9" data-slide hidden>
+      <div class="tutorial-slide__content">
+        <h2>9. Attack Phase: Defending And Blocking</h2>
+        <p>The defending player chooses blockers.</p>
+        <ul>
+          <li>Choose characters to block attackers and stop damage to yourself.</li>
+          <li>The attacker and blocker deal damage to each other. If any character has 0 or less health, it is destroyed.</li>
+          <li>If an attacker is not blocked, it deals damage to your opponent.</li>
+        </ul>
+      </div>
+      <figure class="tutorial-slide__card tutorial-slide__card--row">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/08.png' | relative_url }}" alt="Zach, Rock Fighter card">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/09.png' | relative_url }}" alt="Jack, Lightning Mage card">
+      </figure>
+    </article>
+
+    <article class="tutorial-slide" id="tutorial-slide-10" data-slide hidden>
+      <div class="tutorial-slide__content">
+        <h2>10. Keywords And What They Mean</h2>
+        <p>Keywords are short rule words. They exist to keep card text shorter.</p>
+        <ul>
+          <li><strong>Haste</strong>: this character can attack on the turn it is played.</li>
+          <li><strong>Flying</strong>: only characters with Flying or Reach can block it.</li>
+          <li><strong>Reach</strong>: this character can block Flying attackers.</li>
+          <li><strong>Vigilance</strong>: this character does not exhaust when it attacks.</li>
+          <li><strong>Lethal</strong>: any damage this character deals to a character destroys it.</li>
+          <li><strong>Unique</strong>: Only one copy of this card can be in your deck and in your control at a time.</li>
+        </ul>
+      </div>
+      <figure class="tutorial-slide__card">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/04.png' | relative_url }}" alt="Tempter, Fistfighter card with keywords">
+      </figure>
+    </article>
+
+    <article class="tutorial-slide" id="tutorial-slide-11" data-slide hidden>
+      <div class="tutorial-slide__content">
+        <h2>11. Turn Wrap-Up</h2>
+        <p>Finish the turn, then pass to the other player.</p>
+        <ul>
+          <li>Resolve all "end of turn" effects.</li>
+          <li>Do cleanup steps required by your rules.</li>
+          <li>Then the next player's turn begins.</li>
+        </ul>
+      </div>
+      <figure class="tutorial-slide__card tutorial-slide__card--row">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/21.png' | relative_url }}" alt="Banana Gem artifact card">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/41.png' | relative_url }}" alt="Risk Taking action card">
+      </figure>
+    </article>
+
+    <article class="tutorial-slide" id="tutorial-slide-12" data-slide hidden>
+      <div class="tutorial-slide__content">
+        <h2>12. Closing The Match</h2>
+        <p>The game ends when a win condition is met.</p>
+        <ul>
+          <li>Main win condition: reduce your opponent's health to 0.</li>
+          <li>If a card gives another win condition, follow that card text.</li>
+          <li>As soon as a win condition is met, the game ends.</li>
+        </ul>
+        <div class="hero__actions tutorial__actions">
+          <a class="btn btn--primary" href="{{ '/gallery.html' | relative_url }}">Study Cards</a>
+          <a class="btn btn--ghost" href="{{ '/rules.html' | relative_url }}">Read Full Rules</a>
+        </div>
+      </div>
+      <figure class="tutorial-slide__card">
+        <img src="{{ '/sets/Base%20Set%202026/fronts/34.png' | relative_url }}" alt="Benji, Political Leader card">
+      </figure>
+    </article>
+
+    <div class="tutorial__controls" aria-label="Slideshow controls">
+      <button class="tutorial__button" id="tutorial-prev" type="button" aria-label="Previous slide">Previous</button>
+      <div class="tutorial__dots" id="tutorial-dots" role="tablist" aria-label="Slides"></div>
+      <button class="tutorial__button" id="tutorial-next" type="button" aria-label="Next slide">Next</button>
+    </div>
+  </section>
+</main>
+
+<script src="{{ '/assets/js/tutorial.js' | relative_url }}" defer></script>

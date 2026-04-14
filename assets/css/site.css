@@ -484,6 +484,138 @@ main {
   cursor: pointer;
 }
 
+.tutorial {
+  display: grid;
+  gap: 1rem;
+}
+
+.tutorial__topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.tutorial__counter {
+  margin: 0;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.tutorial__progress {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(61, 83, 142, 0.32);
+  overflow: hidden;
+}
+
+.tutorial__progress span {
+  display: block;
+  width: 12.5%;
+  height: 100%;
+  background: linear-gradient(90deg, #ff315f, #2e84ff);
+  transition: width 240ms ease;
+}
+
+.tutorial-slide {
+  display: grid;
+  grid-template-columns: 1.25fr minmax(220px, 380px);
+  gap: 1rem;
+  align-items: center;
+  background: linear-gradient(180deg, #131a30, #0f1528);
+  border: 1px solid var(--edge);
+  border-radius: 14px;
+  padding: 1rem;
+  width: 100%;
+  height: 32rem;
+  overflow: auto;
+}
+
+.tutorial-slide[hidden] {
+  display: none;
+}
+
+.tutorial-slide__content p {
+  margin-top: 0.6rem;
+}
+
+.tutorial-slide__content ul {
+  margin: 0.8rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--ink-soft);
+}
+
+.tutorial-slide__card {
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+
+.tutorial-slide__card img {
+  width: min(100%, 320px);
+  border-radius: 12px;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.45);
+  object-fit: contain;
+}
+
+.tutorial-slide__card--row {
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 0.6rem;
+}
+
+.tutorial-slide__card--row img {
+  width: 100%;
+}
+
+.tutorial__controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.tutorial__button {
+  border: 1px solid var(--edge);
+  border-radius: 10px;
+  background: rgba(14, 22, 42, 0.9);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+}
+
+.tutorial__button:hover {
+  background: rgba(31, 42, 76, 0.95);
+}
+
+.tutorial__dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.tutorial__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(188, 208, 255, 0.6);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.tutorial__dot.is-active {
+  background: linear-gradient(90deg, #ff315f, #2e84ff);
+  border-color: transparent;
+}
+
+.tutorial__actions {
+  margin-top: 1rem;
+}
+
 @media (max-width: 740px) {
   .nav {
     flex-direction: column;
@@ -514,6 +646,33 @@ main {
   .carousel-3d__track img {
     width: 150px;
     height: 210px;
+  }
+
+  .tutorial__topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .tutorial-slide {
+    grid-template-columns: 1fr;
+    height: 44rem;
+  }
+
+  .tutorial-slide__card {
+    order: -1;
+  }
+
+  .tutorial-slide__card img {
+    width: min(100%, 260px);
+  }
+
+  .tutorial__controls {
+    grid-template-columns: 1fr;
+  }
+
+  .tutorial__button {
+    width: 100%;
   }
 
 }
