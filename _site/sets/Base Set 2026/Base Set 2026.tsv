@@ -20,7 +20,7 @@ Copies	Nickname	card_background	cardname	cardtypeimage	cardimage	cardimage style
 3			Cook	actionLogo.png	Cook.png		Action - Slow	Create a Food token. *(It's a Token with this card text: "Destroy this card: Gain 2 life".)*	19	BS26	
 3			Portable Wingsuit	artifactLogo.png	Wingsuit.png		Artifact Item - Wearable	Select a character you control. That character gains Flying while this card remains in play.	20	BS26	
 2			Banana Gem	artifactLogo.png	Banana Gem.png		Unique Artifact - Gem	Actions: {icons/WildAction.png}	21	BS26	Rare
-3			Benji Alert	actionLogo.png	Benji Alert.png		Action - Slow	Search your deck for up to a character with the Hero keyword and put it into your hand. Then, shuffle your deck.	22	BS26	
+3			Benji Alert	actionLogo.png	Benji Alert.png		Action - Slow	Search your deck for a character with the Hero keyword and put it into your hand. Then, shuffle your deck.	22	BS26	
 1			Benji HQ	locationLogo.png	Benji HQ.png		Location - Building	All characters with the Hero keyword gain +1/+1 while this Location is in play.	23	BS26	
 1			Banana City	locationLogo.png	Banana City.png		Location - City	All characters with the Villain keyword gain +1/+1 while this Location is in play.	24	BS26	
 1			Benji City	locationLogo.png	Benji City.png		Location - City	At the start of your turn, add {icons/QuestionAction.png} to your action pool for every non-Token character in play you control that isn't a Villain.	25	BS26	
