@@ -219,6 +219,39 @@ h1 {
   overflow: hidden;
 }
 
+.site-discord {
+  max-width: 1100px;
+  margin: 2rem auto 3rem;
+  padding: 0 1.2rem;
+}
+
+.site-discord__inner {
+  display: grid;
+  grid-template-columns: minmax(280px, 350px) 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.site-discord__widget {
+  width: min(100%, 350px);
+  height: 500px;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.site-discord__copy {
+  max-width: 64ch;
+}
+
+.site-discord__copy h2 {
+  margin-bottom: 0.7rem;
+}
+
+.site-discord__copy p {
+  margin: 0 0 0.7rem;
+}
+
 .carousel-3d {
   height: 430px;
   display: grid;
@@ -646,6 +679,25 @@ main {
   .carousel-3d__track img {
     width: 150px;
     height: 210px;
+  }
+
+  .site-discord {
+    margin: 1.2rem auto 2.2rem;
+  }
+
+  .site-discord__inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .site-discord__copy {
+    max-width: 72ch;
+  }
+
+  .site-discord__widget {
+    width: 100%;
+    max-width: 350px;
+    height: min(72vh, 500px);
   }
 
   .tutorial__topbar {
