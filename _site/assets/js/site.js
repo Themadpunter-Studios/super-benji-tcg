@@ -28,7 +28,8 @@
         const scale = Math.max(0.62, 1.22 - distance * 0.15);
         const x = delta * 108;
         const y = distance * 12;
-        const z = 130 - distance * 18;
+        // Keep card stacking below the sticky header z-index.
+        const z = 20 - distance * 3;
         const opacity = Math.max(0.34, 1 - distance * 0.14);
 
         card.style.transform = `translate(-50%, -50%) translateX(${x}px) translateY(${y}px) scale(${scale})`;
