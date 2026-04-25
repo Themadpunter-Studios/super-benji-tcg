@@ -24,7 +24,7 @@ Each turn consists of five phases.
 
 ### Start Phase
 
-Ready all exhausted cards. Characters generate Actions and add them to your Action Pool. Resolve any effects that occur at the start of your turn.
+Ready all exhausted cards. Characters generate Actions and add them to your Action Pool. Resolve any effects that occur at the start of your turn. Characters also heal at the start of your turn.
 
 ### Draw Phase
 
@@ -128,7 +128,8 @@ Each turn proceeds in the following order:
 **4.1.1** All exhausted cards controlled by the active player become ready.  
 **4.1.2** Each Character controlled by the active player generates its listed Actions.  
 **4.1.3** Generated Actions are added to the player’s Action Pool.  
-**4.1.4** All “start of turn” effects controlled by the active player resolve.
+**4.1.4** All “start of turn” effects controlled by the active player resolve.  
+**4.1.5** All characters heal to their maximum hit points.
 
 ### 4.2 Draw Phase
 
