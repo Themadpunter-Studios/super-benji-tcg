@@ -54,7 +54,7 @@ A Character may either attack or use an ability that requires exhausting. It can
 
 ### Characters
 
-Characters have Attack, Health, Action generation, and abilities or keywords. They cannot attack on the turn they are played unless they have Haste. They must be ready to attack or block. When a Character’s Health reaches 0 or less, it is destroyed. If a Character is Unique, you may only control one Character with the same Basic Name at a time. Characters also grant Actions when they are played.
+Characters have Attack, Health, Action generation, and abilities or keywords. They cannot attack on the turn they are played unless they have Speed. They must be ready to attack or block. When a Character’s Health reaches 0 or less, it is destroyed. If a Character is Unique, you may only control one Character with the same Basic Name at a time. Characters also grant Actions when they are played.
 
 ### Artifacts
 
@@ -82,7 +82,7 @@ Damage is dealt simultaneously. Each Character deals damage equal to its Attack.
 
 **Flying**: Can only be blocked by Characters with Flying or Reach.  
 **Reach**: Can block Characters with Flying.  
-**Haste**: Can attack on the turn it is played.  
+**Speed**: Can attack on the turn it is played.  
 **Vigilance**: Does not exhaust when attacking.  
 **Lethal**: Any damage dealt by this Character destroys other Characters.  
 **Pilot** (X): Exhaust X other ready Characters you control to activate a “When Piloted” effect.  
@@ -212,7 +212,7 @@ Each turn proceeds in the following order:
 ### 6.1 Characters
 
 **6.1.1** Characters have Attack, Health, Action generation, and abilities.  
-**6.1.2** A Character cannot attack on the turn it enters play unless it has Haste.  
+**6.1.2** A Character cannot attack on the turn it enters play unless it has Speed.  
 **6.1.3** A Character must be ready to attack or block.  
 **6.1.4** A Character is destroyed when its Health is 0 or less.  
 **6.1.5** When a Character is played, add the actions listed on the card to your action pool.
@@ -260,7 +260,7 @@ Each turn proceeds in the following order:
 
 **8.2.1** Can block Characters with Flying.
 
-### 8.3 Haste
+### 8.3 Speed
 
 **8.3.1** May attack on the turn it enters play.
 
