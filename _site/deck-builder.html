@@ -8,23 +8,23 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Super Benji Trading Card Game - Cards, Rules and Deck Building Guide | Super Benji TCG</title>
+    <title>Deck Builder | Super Benji TCG</title>
     <meta name="description" content="Official fan site for the Super Benji Trading Card Game.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0b0d14">
     <meta name="format-detection" content="telephone=no">
-    <link rel="canonical" href="http://localhost:4000/">
+    <link rel="canonical" href="http://localhost:4000/deck-builder.html">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="Super Benji TCG">
-    <meta property="og:title" content="Super Benji Trading Card Game - Cards, Rules and Deck Building Guide">
+    <meta property="og:title" content="Deck Builder">
     <meta property="og:description" content="Official fan site for the Super Benji Trading Card Game.">
-    <meta property="og:url" content="http://localhost:4000/">
+    <meta property="og:url" content="http://localhost:4000/deck-builder.html">
     <meta property="og:image" content="http://localhost:4000/assets/images/super-benji-tcg.png">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Super Benji Trading Card Game - Cards, Rules and Deck Building Guide">
+    <meta name="twitter:title" content="Deck Builder">
     <meta name="twitter:description" content="Official fan site for the Super Benji Trading Card Game.">
     <meta name="twitter:image" content="http://localhost:4000/assets/images/super-benji-tcg.png">
 
@@ -54,86 +54,90 @@
     <header class="hero" id="top">
   <div class="hero__bg-shape hero__bg-shape--left" aria-hidden="true"></div>
   <div class="hero__bg-shape hero__bg-shape--right" aria-hidden="true"></div>
-
   <section class="hero__content">
-    <p class="eyebrow">Super Benji Show + Movies</p>
-    <h1>Battle for Benji Island</h1>
+    <p class="eyebrow">Deck Construction</p>
+    <h1>Deck Builder</h1>
     <p class="hero__lead">
-      Super Benji TCG is the official trading card game tie-in to the Super Benji Show and Movies.
-      Build your deck, deploy your favorite characters, and outplay your rival with Actions, Locations, and Artifacts.
+      Build a legal Super Benji TCG deck in Set/Card format, then export the same list by card name for easy sharing.
     </p>
-    <div class="hero__actions">
-      <a class="btn btn--primary" href="/gallery.html">Browse Cards</a>
-      <a class="btn btn--primary" href="/tutorial.html">Start Tutorial</a>
-      <a class="btn btn--ghost" href="#how-to-play">Learn the Objective</a>
-      <a class="btn btn--ghost" href="/rules.html">Read Full Rules</a>
-    </div>
   </section>
 </header>
 
 <main>
-  <section class="section" id="about">
+  <section class="section deck-builder" id="deck-builder">
     <div class="section__heading">
-      <p class="eyebrow">What Is It</p>
-      <h2>The Super Benji Trading Card Game</h2>
+      <p class="eyebrow">Rules-aware</p>
+      <h2>Track cards by set and validate the list automatically</h2>
     </div>
-    <p>
-      The objective is simple: defeat your opponent by lowering their health before they lower yours.
-      Play Characters from the show and movies to clash on the battlefield, then shift momentum with clever Actions,
-      game-changing Locations, and powerful Artifacts.
-    </p>
-  </section>
 
-  <section class="section section--highlight" id="lore">
-    <div class="section__heading">
-      <p class="eyebrow">Story</p>
-      <h2>Factions Of Benji Island</h2>
-    </div>
-    <p>
-      Two factions are locked in a battle for control of Benji Island: Benji and his heroes,
-      the League of Grace, against Dr. Banana and his villains, the Banana Republic.
-      Every deck and duel reflects this larger struggle for power across the island.
-    </p>
-  </section>
+    <div class="deck-builder__summary" id="deck-summary" aria-live="polite"></div>
 
-  <section class="section section--highlight" id="how-to-play">
-    <div class="section__heading">
-      <p class="eyebrow">Core Gameplay</p>
-      <h2>How Victory Works</h2>
+    <div class="deck-builder__toolbar">
+      <button class="deck-builder__button deck-builder__button--primary" id="deck-copy-export" type="button">Copy Name Export</button>
+      <button class="deck-builder__button" id="deck-save" type="button">Save Deck</button>
+      <button class="deck-builder__button" id="deck-load" type="button">Load Saved Deck</button>
+      <button class="deck-builder__button" id="deck-clear" type="button">Clear Deck</button>
     </div>
-    <div class="pillars">
-      <article class="pillar">
-        <h3>1. Summon Characters</h3>
-        <p>Deploy heroes, villains, and allies from the Super Benji universe to pressure your opponent.</p>
-      </article>
-      <article class="pillar">
-        <h3>2. Control The Field</h3>
-        <p>Use Actions, Locations, and Artifacts to disrupt combos, buff your side, and swing combat outcomes.</p>
-      </article>
-      <article class="pillar">
-        <h3>3. Claim Benji Island</h3>
-        <p>Keep pushing damage and tactical advantages until your opponent's health is fully depleted.</p>
-      </article>
+
+    <div class="deck-builder__status" id="deck-status" aria-live="polite"></div>
+
+    <div class="deck-builder__layout">
+      <section class="deck-builder__panel">
+        <div class="deck-builder__panel-heading">
+          <div>
+            <p class="eyebrow">Card Catalog</p>
+            <h3>Pick cards to add</h3>
+          </div>
+          <p class="deck-builder__helper">Use the filter to browse a set, then click Add to push a copy into the deck list.</p>
+        </div>
+
+        <div class="deck-builder__filters" aria-label="Catalog filters">
+          <label for="set-filter">Set</label>
+          <select id="set-filter">
+            
+            <option value="base-set-2026">Base Set 2026</option>
+            
+          </select>
+          <label for="card-search">Search</label>
+          <input id="card-search" type="search" placeholder="Name, number, code, or text" autocomplete="off">
+        </div>
+
+        <div class="deck-builder__catalog" id="catalog-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="deck-builder__panel deck-builder__panel--deck">
+        <div class="deck-builder__panel-heading">
+          <div>
+            <p class="eyebrow">Current Deck</p>
+            <h3>Amount x Set/Card</h3>
+          </div>
+          <p class="deck-builder__helper">This is the source of truth. Each line should look like <strong>2 x BS26/13</strong>.</p>
+        </div>
+
+        <label class="deck-builder__label" for="deck-input">Deck list</label>
+        <textarea id="deck-input" class="deck-builder__textarea" spellcheck="false" rows="16" placeholder="1 x BS26/01"></textarea>
+
+        <div class="deck-builder__issues" id="deck-issues" aria-live="polite"></div>
+
+        <div class="deck-builder__exports">
+          <div class="deck-builder__export-block">
+            <label class="deck-builder__label" for="deck-export-set">Normalized Set/Card export</label>
+            <textarea id="deck-export-set" class="deck-builder__textarea deck-builder__textarea--readonly" rows="10" readonly></textarea>
+          </div>
+          <div class="deck-builder__export-block">
+            <label class="deck-builder__label" for="deck-export-name">Card Name export</label>
+            <textarea id="deck-export-name" class="deck-builder__textarea deck-builder__textarea--readonly" rows="10" readonly></textarea>
+          </div>
+        </div>
+      </section>
     </div>
   </section>
-
-  <section class="section section--highlight showcase" id="showcase">
-    <div class="section__heading">
-      <h2>Featured Cards Showcase</h2>
-    </div>
-    <div class="carousel-3d" aria-label="Featured cards rotating showcase">
-      <figure class="carousel-3d__track">
-        <img style="--slot: 0" src="/sets/Base%20Set%202026/fronts/00.png" alt="Featured card 00">
-        <img style="--slot: 1" src="/sets/Base%20Set%202026/fronts/03.png" alt="Featured card 03">
-        <img style="--slot: 2" src="/sets/Base%20Set%202026/fronts/35.png" alt="Featured card 35">
-        <img style="--slot: 3" src="/sets/Base%20Set%202026/fronts/34.png" alt="Featured card 34">
-        <img style="--slot: 4" src="/sets/Base%20Set%202026/fronts/33.png" alt="Featured card 33">
-      </figure>
-    </div>
-  </section>
-
 </main>
 
+<script id="sets-json" type="application/json">
+[{"id":"base-set-2026","name":"Base Set 2026","path":"sets/Base Set 2026/fronts","tsv":"sets/Base Set 2026/Base Set 2026.tsv","total_cards":57,"code_prefix":"","code_padding":2,"description":"The foundational release of Super Benji TCG, featuring iconic characters, rival forces, and key locations from Benji Island."}]
+</script>
+<script src="/assets/js/deck-builder.js" defer></script>
 
     <section class="site-discord section section--highlight" aria-label="Official Discord server">
       <div class="site-discord__inner">

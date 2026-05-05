@@ -12,7 +12,7 @@ Each player starts with 20 Health. If a player must draw a card and cannot, they
 ## Deck Construction
 
 Each deck contains exactly 27 cards.  
-You may include up to 3 copies of any card in your deck, except cards with Unique in their card type. Card types include Characters, Artifacts, Locations, and Actions.
+You may include up to 3 copies of any card in your deck, except cards with Unique in their card type, which are limited to 1 copy each by full card name. Card types include Characters, Artifacts, Locations, and Actions, and all of these may be Unique.
 
 ## Game Setup
 
@@ -54,7 +54,7 @@ A Character may either attack or use an ability that requires exhausting. It can
 
 ### Characters
 
-Characters have Attack, Health, Action generation, and abilities or keywords. They cannot attack on the turn they are played unless they have Speed. They must be ready to attack or block. When a Character’s Health reaches 0 or less, it is destroyed. If a Character is Unique, you may only control one Character with the same Basic Name at a time. Characters also grant Actions when they are played.
+Characters have Attack, Health, Action generation, and abilities or keywords. They cannot attack on the turn they are played unless they have Speed. They must be ready to attack or block. When a Character’s Health reaches 0 or less, it is destroyed. If a card is Unique, you may only control one card with the same Basic Name at a time. Characters also grant Actions when they are played.
 
 ### Artifacts
 
@@ -110,7 +110,7 @@ All unspent Actions are lost at the end of each turn and cannot be carried over.
 
 **2.1** Each deck must contain exactly 27 cards.  
 **2.2** A deck may contain no more than 3 copies of any card by name.  
-**2.3** Cards with the **Unique** designation are additionally restricted by Basic Name (see 6.5).  
+**2.3** Cards with the **Unique** designation are limited to 1 copy each by full card name.  
 **2.4** Card types are Characters, Artifacts, Locations, and Actions.
 
 ## 3\. Game Setup
@@ -219,8 +219,8 @@ Each turn proceeds in the following order:
 
 ### 6.2 Unique Rule
 
-**6.2.1** A Character’s Basic Name is the portion of its name before a comma.  
-**6.2.2** A player may control only one Unique Character with the same Basic Name.  
+**6.2.1** A card’s Basic Name is the portion of its name before a comma.  
+**6.2.2** A player may control only one Unique card with the same Basic Name.  
 **6.2.3** If a player would control more than one, they must choose one to keep and destroy the others.
 
 ### 6.3 Artifacts
