@@ -13,8 +13,16 @@
   const deckLoad = document.getElementById("deck-load");
   const deckClear = document.getElementById("deck-clear");
   const deckCopyExport = document.getElementById("deck-copy-export");
+  const deckImportOpen = document.getElementById("deck-import-open");
+  const deckImportModal = document.getElementById("deck-import-modal");
+  const deckImportClose = document.getElementById("deck-import-close");
+  const deckImportCancel = document.getElementById("deck-import-cancel");
+  const deckImportRun = document.getElementById("deck-import-run");
+  const deckImportInput = document.getElementById("deck-import-input");
+  const deckImportAllowPromos = document.getElementById("deck-import-allow-promos");
+  const deckImportStatus = document.getElementById("deck-import-status");
 
-  if (!setsNode || !setFilter || !searchInput || !catalogGrid || !deckInput || !deckIssues || !deckSummary || !deckStatus || !deckExportSet || !deckExportName || !deckSave || !deckLoad || !deckClear || !deckCopyExport) {
+  if (!setsNode || !setFilter || !searchInput || !catalogGrid || !deckInput || !deckIssues || !deckSummary || !deckStatus || !deckExportSet || !deckExportName || !deckSave || !deckLoad || !deckClear || !deckCopyExport || !deckImportOpen || !deckImportModal || !deckImportClose || !deckImportCancel || !deckImportRun || !deckImportInput || !deckImportAllowPromos || !deckImportStatus) {
     return;
   }
 
@@ -22,6 +30,7 @@
   const sets = JSON.parse(setsNode.textContent || "[]");
   const cardCache = new Map();
   const cardIndex = new Map();
+  const cardsByName = new Map();
 
   function cardCode(index, padding) {
     return String(index).padStart(padding, "0");
@@ -44,7 +53,23 @@
       .replace(/\/(\d+)$/, (_, digits) => `/${normalizeCardNumber(digits)}`);
   }
 
-  function parseTsv(text, setMeta) {
+  function isPromoCard(card) {
+    return !/^\d+$/.test(String(card.cardNumber || "").trim());
+  }
+
+  function comparePrintings(left, right) {
+    if (left.setOrder !== right.setOrder) {
+      return right.setOrder - left.setOrder;
+    }
+
+    if (left.rowOrder !== right.rowOrder) {
+      return right.rowOrder - left.rowOrder;
+    }
+
+    return right.cardNumber.localeCompare(left.cardNumber, undefined, { numeric: true, sensitivity: "base" });
+  }
+
+  function parseTsv(text, setMeta, setOrder) {
     const lines = text.split(/\r?\n/).filter((line) => line.trim().length > 0);
     if (lines.length < 2) {
       return [];
@@ -71,6 +96,8 @@
         setId: setMeta.id,
         setName: setMeta.name,
         setCode,
+        setOrder,
+        rowOrder: rowIndex,
         cardNumber: displayNumber,
         cardName,
         copies: row.copies || "",
@@ -82,7 +109,7 @@
     });
   }
 
-  async function getSetCards(setMeta) {
+  async function getSetCards(setMeta, setOrder = 0) {
     if (cardCache.has(setMeta.id)) {
       return cardCache.get(setMeta.id);
     }
@@ -93,7 +120,7 @@
     }
 
     const tsvText = await response.text();
-    const cards = parseTsv(tsvText, setMeta);
+    const cards = parseTsv(tsvText, setMeta, setOrder);
     cardCache.set(setMeta.id, cards);
     return cards;
   }
@@ -156,6 +183,67 @@
     });
 
     return Array.from(merged.values());
+  }
+
+  function updateImportStatus(message, isError = false) {
+    deckImportStatus.innerHTML = message
+      ? `<p class="${isError ? "deck-import-modal__status--error" : "deck-import-modal__status--ok"}">${message}</p>`
+      : "";
+  }
+
+  function openImportModal() {
+    deckImportModal.classList.add("is-open");
+    deckImportModal.setAttribute("aria-hidden", "false");
+    deckImportInput.focus();
+  }
+
+  function closeImportModal() {
+    deckImportModal.classList.remove("is-open");
+    deckImportModal.setAttribute("aria-hidden", "true");
+    updateImportStatus("");
+  }
+
+  function getCardsForName(cardName, allowPromos) {
+    const candidates = cardsByName.get(normalizeText(cardName)) || [];
+    const eligibleCards = allowPromos ? candidates : candidates.filter((card) => !isPromoCard(card));
+    return eligibleCards.sort(comparePrintings);
+  }
+
+  function pickCardForImport(cardName, allowPromos) {
+    const candidates = getCardsForName(cardName, allowPromos);
+    return candidates[0] || null;
+  }
+
+  function parseNameImport(text, allowPromos) {
+    const entries = [];
+    const issues = [];
+
+    text.split(/\r?\n/).forEach((line, index) => {
+      const trimmed = line.trim();
+      if (!trimmed) {
+        return;
+      }
+
+      const match = trimmed.match(/^(\d+)\s*(?:x|×)?\s+(.+)$/i);
+      if (!match) {
+        issues.push(`Line ${index + 1} is not in Amount x Card Name format.`);
+        return;
+      }
+
+      const count = Number.parseInt(match[1], 10);
+      const cardName = match[2].trim();
+      const card = pickCardForImport(cardName, allowPromos);
+
+      if (!card) {
+        const suffix = allowPromos ? "" : " with promos disabled";
+        issues.push(`Line ${index + 1} references unknown or promo-only card ${cardName}${suffix}.`);
+        return;
+      }
+
+      entries.push({ count, identifier: `${card.setCode}/${card.cardNumber}`, card });
+    });
+
+    return { entries, issues };
   }
 
   function normalizeDeckEntries(entries) {
@@ -302,7 +390,7 @@
     }
 
     const setsToLoad = filterSetId
-      ? [sets.find((setMeta) => setMeta.id === filterSetId)]
+      ? sets.filter((setMeta) => setMeta.id === filterSetId)
       : sets;
 
     Promise.all(setsToLoad.map((setMeta) => getSetCards(setMeta)))
@@ -346,10 +434,16 @@
   }
 
   async function loadCatalogIndex() {
-    const allCards = await Promise.all(sets.map((setMeta) => getSetCards(setMeta)));
+    const allCards = await Promise.all(sets.map((setMeta, setOrder) => getSetCards(setMeta, setOrder)));
     allCards.flat().forEach((card) => {
       cardIndex.set(normalizeCardIdentifier(`${card.setCode}/${card.cardNumber}`), card);
+      const bucketKey = normalizeText(card.cardName);
+      const bucket = cardsByName.get(bucketKey) || [];
+      bucket.push(card);
+      cardsByName.set(bucketKey, bucket);
     });
+
+    cardsByName.forEach((cards) => cards.sort(comparePrintings));
   }
 
   function saveDeck() {
@@ -380,9 +474,38 @@
     }
   }
 
+  function importDeckFromNames() {
+    const allowPromos = deckImportAllowPromos.checked;
+    const parsed = parseNameImport(deckImportInput.value, allowPromos);
+
+    if (parsed.issues.length > 0) {
+      updateImportStatus(parsed.issues.join(" "), true);
+      return;
+    }
+
+    deckInput.value = normalizeDeckEntries(mergeEntries(parsed.entries));
+    updateDeckView();
+    deckStatus.innerHTML = '<p class="deck-builder__status--legal">Deck imported from card names.</p>';
+    closeImportModal();
+  }
+
   setFilter.addEventListener("change", renderCatalog);
   searchInput.addEventListener("input", renderCatalog);
   deckInput.addEventListener("input", updateDeckView);
+  deckImportOpen.addEventListener("click", openImportModal);
+  deckImportClose.addEventListener("click", closeImportModal);
+  deckImportCancel.addEventListener("click", closeImportModal);
+  deckImportRun.addEventListener("click", importDeckFromNames);
+  deckImportModal.addEventListener("click", (event) => {
+    if (event.target === deckImportModal) {
+      closeImportModal();
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && deckImportModal.classList.contains("is-open")) {
+      closeImportModal();
+    }
+  });
   deckSave.addEventListener("click", saveDeck);
   deckLoad.addEventListener("click", loadDeck);
   deckClear.addEventListener("click", clearDeck);

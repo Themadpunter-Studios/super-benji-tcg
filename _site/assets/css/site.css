@@ -648,6 +648,86 @@ main {
   margin-top: 1rem;
 }
 
+.deck-import-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(2, 6, 16, 0.84);
+  z-index: 80;
+}
+
+.deck-import-modal.is-open {
+  display: flex;
+}
+
+.deck-import-modal__panel {
+  width: min(900px, 100%);
+  max-height: min(90vh, 900px);
+  overflow: auto;
+  border: 1px solid var(--edge);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #11172a, #0b0f18);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.deck-import-modal__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.deck-import-modal__header h2 {
+  font-size: 1.7rem;
+}
+
+.deck-import-modal__help {
+  margin-bottom: 0.9rem;
+}
+
+.deck-import-modal__textarea {
+  min-height: 14rem;
+}
+
+.deck-import-modal__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.deck-import-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.deck-import-modal__status {
+  min-height: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.deck-import-modal__status p {
+  margin: 0;
+  font-weight: 700;
+}
+
+.deck-import-modal__status--ok {
+  color: #8ef0b2;
+}
+
+.deck-import-modal__status--error {
+  color: #ffb3b3;
+}
+
 .card-tile {
   margin: 0;
   border-radius: 14px;
@@ -970,6 +1050,16 @@ main {
 
   .deck-builder__button,
   .deck-card__add {
+    width: 100%;
+  }
+
+  .deck-import-modal__header,
+  .deck-import-modal__actions {
+    flex-direction: column;
+  }
+
+  .deck-import-modal__button,
+  .deck-import-modal .deck-builder__button {
     width: 100%;
   }
 

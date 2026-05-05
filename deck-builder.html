@@ -26,6 +26,7 @@ permalink: /deck-builder.html
     <div class="deck-builder__summary" id="deck-summary" aria-live="polite"></div>
 
     <div class="deck-builder__toolbar">
+      <button class="deck-builder__button" id="deck-import-open" type="button">Import Card Names</button>
       <button class="deck-builder__button deck-builder__button--primary" id="deck-copy-export" type="button">Copy Name Export</button>
       <button class="deck-builder__button" id="deck-save" type="button">Save Deck</button>
       <button class="deck-builder__button" id="deck-load" type="button">Load Saved Deck</button>
@@ -87,6 +88,37 @@ permalink: /deck-builder.html
     </div>
   </section>
 </main>
+
+<div class="deck-import-modal" id="deck-import-modal" aria-hidden="true" role="dialog" aria-label="Import deck from card names">
+  <div class="deck-import-modal__panel">
+    <div class="deck-import-modal__header">
+      <div>
+        <p class="eyebrow">Import</p>
+        <h2>Import Amount x Card Name</h2>
+      </div>
+      <button class="deck-builder__button" id="deck-import-close" type="button">Close</button>
+    </div>
+
+    <p class="deck-builder__helper deck-import-modal__help">
+      Paste lines like <strong>2 x Banana Soldier</strong>. By default the builder uses the newest non-promo printing it can find.
+    </p>
+
+    <label class="deck-builder__label" for="deck-import-input">Deck import text</label>
+    <textarea id="deck-import-input" class="deck-builder__textarea deck-import-modal__textarea" spellcheck="false" rows="10" placeholder="2 x Banana Soldier"></textarea>
+
+    <label class="deck-import-modal__checkbox">
+      <input id="deck-import-allow-promos" type="checkbox">
+      <span>Allow promo printings during import</span>
+    </label>
+
+    <div class="deck-import-modal__actions">
+      <button class="deck-builder__button deck-builder__button--primary" id="deck-import-run" type="button">Import Deck</button>
+      <button class="deck-builder__button" id="deck-import-cancel" type="button">Cancel</button>
+    </div>
+
+    <div class="deck-import-modal__status" id="deck-import-status" aria-live="polite"></div>
+  </div>
+</div>
 
 <script id="sets-json" type="application/json">
 {{ site.data.sets | jsonify }}
