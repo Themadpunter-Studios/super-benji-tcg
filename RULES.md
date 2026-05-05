@@ -295,3 +295,31 @@ Each turn proceeds in the following order:
 
 **9.2.1** All unspent Actions are removed at the end of each turn.  
 **9.2.2** Actions cannot be carried over between turns.
+
+### 9.3 Rules Precedence
+**9.3.1** If a card or effect contradicts the core rules, the card text takes precedence.
+**9.3.2** If one effect allows something and another prevents it, the effect that prevents it takes precedence.
+**9.3.3** Effects using “instead” replace the original event entirely.
+
+### 9.4 Resolution Order
+**9.4.1** Effects resolve one at a time in the order they are played or triggered, unless otherwise specified.
+**9.4.2** Once an effect begins resolving, it cannot be interrupted.
+**9.4.3** If an effect contains multiple instructions, they are performed in order. If part of the effect cannot be completed, the remaining steps still resolve unless explicitly dependent.
+**9.4.4** If multiple effects would resolve at the same time, the active player chooses the order of their effects, then the opponent does the same.
+**9.4.5** Players take turns with priority
+
+### 9.5 Targeting
+**9.5.1** Targets must be legal targets at the time they are chosen.
+**9.5.2** If all targets become illegal targets before resolution, the effect fails.
+**9.5.3** If only some targets become illegal, the effect still resolves on remaining valid targets.
+
+### 9.6 Game State
+**9.6.1** The game state is checked continuously for conditions to be met.
+**9.6.2** When a condition is met, the effects of that condition are immediately resolved, and do not use the effect resolution system. Players cannot respond to them.
+
+### 9.7 Control
+**9.7.1** “Control” refers to cards a player currently has in play.
+**9.7.2** “Owner” refers to the player who began the game with the card in their deck.
+
+### 9.8 Loops
+**9.8.1** If two effects trigger in a mandatory infinite loop that cannot be stopped, the game ends in a draw.
