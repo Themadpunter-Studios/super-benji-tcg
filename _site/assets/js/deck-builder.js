@@ -246,7 +246,7 @@
       </article>
       <article class="deck-builder__stat deck-builder__stat--${result.isLegal ? "legal" : "illegal"}">
         <span class="deck-builder__stat-label">Legality</span>
-        <strong>${result.isLegal ? "Legal" : "Needs work"}</strong>
+        <strong>${result.isLegal ? "Legal" : "Illegal"}</strong>
       </article>
     `;
 
@@ -293,17 +293,22 @@
   }
 
   function renderCatalog() {
-    const activeSet = sets.find((setMeta) => setMeta.id === setFilter.value) || sets[0];
     const query = normalizeText(searchInput.value);
+    const filterSetId = setFilter.value;
 
-    if (!activeSet) {
+    if (!sets || sets.length === 0) {
       catalogGrid.innerHTML = "<p>No sets are available.</p>";
       return;
     }
 
-    getSetCards(activeSet)
-      .then((cards) => {
-        const visibleCards = cards.filter((card) => {
+    const setsToLoad = filterSetId
+      ? [sets.find((setMeta) => setMeta.id === filterSetId)]
+      : sets;
+
+    Promise.all(setsToLoad.map((setMeta) => getSetCards(setMeta)))
+      .then((results) => {
+        const allCards = results.flat();
+        const visibleCards = allCards.filter((card) => {
           const haystack = [card.cardName, card.cardNumber, card.setCode, card.cardType, card.cardText, card.rarity]
             .join(" ")
             .toLowerCase();
