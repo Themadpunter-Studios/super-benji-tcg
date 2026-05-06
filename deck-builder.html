@@ -16,21 +16,18 @@ permalink: /deck-builder.html
   </section>
 </header>
 
-<main>
+<main class="main--full">
   <section class="section deck-builder" id="deck-builder">
     <div class="section__heading">
       <p class="eyebrow">Rules-aware</p>
       <h2>Track cards by set and validate the list automatically</h2>
     </div>
 
-    <div class="deck-builder__summary" id="deck-summary" aria-live="polite"></div>
-
     <div class="deck-builder__toolbar">
       <button class="deck-builder__button" id="deck-import-open" type="button">Import Card Names</button>
+      <button class="deck-builder__button" id="deck-library-open" type="button">Deck Library</button>
       <button class="deck-builder__button deck-builder__button--primary" id="deck-copy-export" type="button">Copy Name Export</button>
-      <button class="deck-builder__button" id="deck-save" type="button">Save Deck</button>
-      <button class="deck-builder__button" id="deck-load" type="button">Load Saved Deck</button>
-      <button class="deck-builder__button" id="deck-clear" type="button">Clear Deck</button>
+      <button class="deck-builder__button" id="deck-new" type="button">New Deck</button>
     </div>
 
     <div class="deck-builder__status" id="deck-status" aria-live="polite"></div>
@@ -55,6 +52,10 @@ permalink: /deck-builder.html
           </select>
           <label for="card-search">Search</label>
           <input id="card-search" type="search" placeholder="Name, number, code, or text" autocomplete="off">
+          <label class="deck-builder__checkbox" for="hide-banned-cards">
+            <input id="hide-banned-cards" type="checkbox" checked>
+            <span>Hide banned cards</span>
+          </label>
         </div>
 
         <div class="deck-builder__catalog" id="catalog-grid" aria-live="polite"></div>
@@ -64,13 +65,20 @@ permalink: /deck-builder.html
         <div class="deck-builder__panel-heading">
           <div>
             <p class="eyebrow">Current Deck</p>
-            <h3>Amount x Set/Card</h3>
+            <h3>Deck View</h3>
           </div>
-          <p class="deck-builder__helper">This is the source of truth. Each line should look like <strong>2 x BS26/13</strong>.</p>
+          <p class="deck-builder__helper">Cards are grouped by type. Click any card to inspect full details.</p>
         </div>
 
-        <label class="deck-builder__label" for="deck-input">Deck list</label>
-        <textarea id="deck-input" class="deck-builder__textarea" spellcheck="false" rows="16" placeholder="1 x BS26/01"></textarea>
+        <div class="deck-builder__deck-name-section" id="deck-name-section" aria-live="polite"></div>
+
+        <div class="deck-builder__summary" id="deck-summary" aria-live="polite"></div>
+
+        <textarea id="deck-input" class="deck-builder__textarea deck-builder__textarea--hidden" spellcheck="false" rows="16" placeholder="1 x BS26/01" aria-hidden="true"></textarea>
+
+        <div class="deck-view" id="deck-view" aria-live="polite">
+          <div class="deck-view__groups" id="deck-type-groups"></div>
+        </div>
 
         <div class="deck-builder__issues" id="deck-issues" aria-live="polite"></div>
 
@@ -88,6 +96,20 @@ permalink: /deck-builder.html
     </div>
   </section>
 </main>
+
+<div class="deck-library-modal" id="deck-library-modal" aria-hidden="true" role="dialog" aria-label="Manage saved decks">
+  <div class="deck-library-modal__panel">
+    <div class="deck-library-modal__header">
+      <div>
+        <p class="eyebrow">Deck Library</p>
+        <h2>Your saved decks</h2>
+      </div>
+      <button class="deck-builder__button" id="deck-library-close" type="button">Close</button>
+    </div>
+
+    <div class="deck-library-modal__list" id="deck-library-list" aria-live="polite"></div>
+  </div>
+</div>
 
 <div class="deck-import-modal" id="deck-import-modal" aria-hidden="true" role="dialog" aria-label="Import deck from card names">
   <div class="deck-import-modal__panel">
@@ -120,7 +142,28 @@ permalink: /deck-builder.html
   </div>
 </div>
 
+<div class="modal" id="deck-card-modal" aria-hidden="true" role="dialog" aria-label="Deck card details">
+  <button class="modal__close" id="deck-card-modal-close" aria-label="Close card details">Close</button>
+  <div class="card-view">
+    <div class="card-view__media">
+      <img id="deck-card-modal-image" alt="Expanded deck card preview">
+    </div>
+    <aside class="card-view__details">
+      <p class="eyebrow">Card Data</p>
+      <h3 id="deck-card-modal-title"></h3>
+      <p id="deck-card-modal-subtitle" class="card-view__subtitle"></p>
+      <p><strong>Type:</strong> <span id="deck-card-modal-type"></span></p>
+      <p><strong>Rarity:</strong> <span id="deck-card-modal-rarity"></span></p>
+      <div id="deck-card-modal-text" class="card-view__text"></div>
+      <button class="card-view__close" id="deck-card-modal-close-bottom" type="button">Close</button>
+    </aside>
+  </div>
+</div>
+
 <script id="sets-json" type="application/json">
 {{ site.data.sets | jsonify }}
+</script>
+<script id="banned-cards-json" type="application/json">
+{{ site.data.banned_cards | jsonify }}
 </script>
 <script src="{{ '/assets/js/deck-builder.js' | relative_url }}" defer></script>

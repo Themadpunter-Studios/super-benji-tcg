@@ -342,6 +342,11 @@ main {
   padding: 2rem 1.2rem 4rem;
 }
 
+.main--full {
+  max-width: none;
+  width: 100%;
+}
+
 .section {
   margin-top: 2.8rem;
 }
@@ -422,8 +427,67 @@ main {
 
 .deck-builder__summary {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.85rem;
+  padding-bottom: 0.35rem;
+}
+
+.deck-builder__deck-name-section {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(18, 24, 41, 0.5);
+  border: 1px solid var(--edge);
+  border-radius: 8px;
+}
+
+.deck-builder__deck-name-label {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-weight: 600;
+  min-width: 50px;
+}
+
+.deck-builder__deck-name-display {
+  flex: 1;
+  color: var(--ink);
+  word-break: break-word;
+}
+
+.deck-builder__deck-name-input {
+  flex: 1;
+  padding: 0.4rem 0.5rem;
+  background: rgba(2, 6, 16, 0.6);
+  border: 1px solid rgba(80, 170, 255, 0.3);
+  border-radius: 4px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.deck-builder__deck-name-input:focus {
+  outline: none;
+  border-color: #50aaff;
+  box-shadow: 0 0 0 2px rgba(80, 170, 255, 0.15);
+}
+
+.deck-builder__deck-name-edit-btn {
+  padding: 0.35rem 0.6rem;
+  background: rgba(80, 170, 255, 0.15);
+  border: 1px solid rgba(80, 170, 255, 0.4);
+  border-radius: 4px;
+  color: #50aaff;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.deck-builder__deck-name-edit-btn:hover {
+  background: rgba(80, 170, 255, 0.25);
+  border-color: rgba(80, 170, 255, 0.6);
 }
 
 .deck-builder__stat {
@@ -472,6 +536,146 @@ main {
   font-weight: 700;
   padding: 0.7rem 1rem;
   cursor: pointer;
+}
+
+.deck-builder__toolbar-input,
+.deck-builder__toolbar-select {
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  background: #121829;
+  color: #e8ecff;
+  font: inherit;
+  padding: 0.7rem 1rem;
+  min-width: 11rem;
+}
+
+.deck-builder__checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.deck-library-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(2, 6, 16, 0.84);
+  z-index: 80;
+}
+
+.deck-library-modal.is-open {
+  display: flex;
+}
+
+.deck-library-modal__panel {
+  width: min(700px, 100%);
+  max-height: min(90vh, 760px);
+  overflow: auto;
+  border: 1px solid var(--edge);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #11172a, #0b0f18);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.deck-library-modal__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.deck-library-modal__header h2 {
+  font-size: 1.55rem;
+}
+
+.deck-library-modal__controls {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.deck-library-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.deck-library-modal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.deck-library-modal__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(18, 24, 41, 0.5);
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+  gap: 0.75rem;
+}
+
+.deck-library-modal__item-name {
+  flex: 1;
+  display: block;
+  padding: 0.25rem 0;
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  word-break: break-word;
+  transition: color 0.2s;
+  background: transparent;
+  border: none;
+  font: inherit;
+  text-align: left;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.deck-library-modal__item-name:hover {
+  color: #50aaff;
+}
+
+.deck-library-modal__delete-btn {
+  flex-shrink: 0;
+  padding: 0.4rem 0.8rem;
+  background: rgba(214, 19, 69, 0.15);
+  border: 1px solid rgba(214, 19, 69, 0.4);
+  border-radius: 4px;
+  color: #d61345;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.2s, border-color 0.2s;
+  font: inherit;
+  font-weight: 600;
+  pointer-events: auto;
+  user-select: none;
+}
+
+.deck-library-modal__delete-btn:hover {
+  background: rgba(214, 19, 69, 0.25);
+  border-color: rgba(214, 19, 69, 0.6);
+}
+
+.deck-library-modal__delete-btn:active {
+  background: rgba(214, 19, 69, 0.35);
+}
+
+.deck-library-modal__empty {
+  text-align: center;
+  padding: 1rem;
+  color: var(--ink-soft);
 }
 
 .deck-builder__button--primary {
@@ -624,6 +828,161 @@ main {
 
 .deck-builder__textarea--readonly {
   min-height: 8rem;
+}
+
+.deck-builder__textarea--hidden {
+  display: none;
+}
+
+.deck-view {
+  display: block;
+}
+
+.deck-view__groups {
+  display: grid;
+  gap: 0.8rem;
+  align-content: start;
+}
+
+.deck-view__group {
+  border: 1px solid rgba(98, 121, 185, 0.42);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(18, 25, 44, 0.96), rgba(10, 13, 22, 0.98));
+  padding: 0.65rem;
+}
+
+.deck-view__group h5 {
+  margin: 0;
+  font-family: "Changa", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+.deck-view__group h5 span {
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+}
+
+.deck-view__list {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 0.45rem;
+}
+
+.deck-view__item {
+  border: 1px solid rgba(73, 99, 166, 0.6);
+  border-radius: 10px;
+  background: rgba(11, 16, 30, 0.9);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0.4rem;
+}
+
+.deck-view__item:hover,
+.deck-view__item.is-active {
+  border-color: rgba(120, 169, 255, 0.95);
+  background: rgba(27, 39, 69, 0.95);
+}
+
+.deck-view__inspect {
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.55rem;
+  text-align: left;
+  width: 100%;
+  padding: 0.1rem 0.15rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+.deck-view__inspect:focus-visible {
+  outline: 2px solid rgba(120, 169, 255, 0.95);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.deck-view__count-controls {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.deck-view__count-btn {
+  border: 1px solid rgba(120, 169, 255, 0.72);
+  background: rgba(18, 28, 52, 0.95);
+  color: var(--ink);
+  border-radius: 8px;
+  width: 1.8rem;
+  height: 1.8rem;
+  display: inline-grid;
+  place-items: center;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.deck-view__count-btn:hover,
+.deck-view__count-btn:focus-visible {
+  background: rgba(35, 53, 94, 0.95);
+}
+
+.deck-view__count {
+  display: inline-grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 999px;
+  background: rgba(35, 53, 94, 0.95);
+  font-weight: 700;
+}
+
+.deck-view__name {
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deck-view__code {
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
+.deck-view__subtitle {
+  color: var(--ink-soft);
+  margin: 0.25rem 0 0.75rem;
+}
+
+.deck-view__media-wrap {
+  border-radius: 12px;
+  background: rgba(7, 10, 18, 0.95);
+  border: 1px solid rgba(81, 101, 160, 0.48);
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+}
+
+.deck-view__media {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.deck-view__text {
+  margin-top: 0.6rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.deck-view__empty {
+  margin: 0;
+  color: var(--ink-soft);
 }
 
 .deck-builder__issues {
@@ -1032,7 +1391,9 @@ main {
   .deck-builder__summary,
   .deck-builder__exports,
   .deck-builder__layout,
-  .deck-builder__filters {
+  .deck-builder__filters,
+  .deck-view,
+  .deck-library-modal__controls {
     grid-template-columns: 1fr;
   }
 
@@ -1054,12 +1415,17 @@ main {
   }
 
   .deck-import-modal__header,
-  .deck-import-modal__actions {
+  .deck-import-modal__actions,
+  .deck-library-modal__header,
+  .deck-library-modal__actions {
     flex-direction: column;
   }
 
   .deck-import-modal__button,
-  .deck-import-modal .deck-builder__button {
+  .deck-import-modal .deck-builder__button,
+  .deck-library-modal .deck-builder__button,
+  .deck-library-modal .deck-builder__toolbar-input,
+  .deck-library-modal .deck-builder__toolbar-select {
     width: 100%;
   }
 

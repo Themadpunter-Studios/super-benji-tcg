@@ -6,3 +6,12 @@
   code_prefix: ""
   code_padding: 2
   description: The foundational release of Super Benji TCG, featuring iconic characters, rival forces, and key locations from Benji Island.
+
+- id: promo
+  name: Promo Cards
+  path: sets/Promo/fronts
+  tsv: sets/Promo/Promo.tsv
+  total_cards: 01 
+  code_prefix: "P"
+  code_padding: 2
+  description: Special promotional cards released that are not part of a set.

@@ -8,23 +8,23 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Card Gallery | Super Benji TCG</title>
+    <title>Banned Cards | Super Benji TCG</title>
     <meta name="description" content="Official fan site for the Super Benji Trading Card Game.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0b0d14">
     <meta name="format-detection" content="telephone=no">
-    <link rel="canonical" href="http://localhost:4000/gallery.html">
+    <link rel="canonical" href="http://localhost:4000/banned-cards.html">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="Super Benji TCG">
-    <meta property="og:title" content="Card Gallery">
+    <meta property="og:title" content="Banned Cards">
     <meta property="og:description" content="Official fan site for the Super Benji Trading Card Game.">
-    <meta property="og:url" content="http://localhost:4000/gallery.html">
+    <meta property="og:url" content="http://localhost:4000/banned-cards.html">
     <meta property="og:image" content="http://localhost:4000/assets/images/super-benji-tcg.png">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Card Gallery">
+    <meta name="twitter:title" content="Banned Cards">
     <meta name="twitter:description" content="Official fan site for the Super Benji Trading Card Game.">
     <meta name="twitter:image" content="http://localhost:4000/assets/images/super-benji-tcg.png">
 
@@ -56,60 +56,29 @@
   <div class="hero__bg-shape hero__bg-shape--left" aria-hidden="true"></div>
   <div class="hero__bg-shape hero__bg-shape--right" aria-hidden="true"></div>
   <section class="hero__content">
-    <p class="eyebrow">Collection Browser</p>
-    <h1>Card Gallery</h1>
-    <p class="hero__lead">
-      Browse cards by set and click any card to see a full-size preview with detailed metadata and card text.
-    </p>
+    <p class="eyebrow">Format Policy</p>
+    <h1>Banned Cards</h1>
+    <p class="hero__lead">Cards on this list are not legal for deck construction.</p>
   </section>
 </header>
 
 <main>
-  <section class="section" id="gallery">
+  <section class="section section--highlight">
     <div class="section__heading">
-      <p class="eyebrow">Collection</p>
-      <h2>Sort By Set</h2>
+      <p class="eyebrow">Current List</p>
+      <h2>Super Benji TCG Ban List</h2>
     </div>
 
-    <div class="gallery-controls" aria-label="Gallery filters">
-      <label for="set-filter">Set</label>
-      <select id="set-filter">
-        
-        <option value="base-set-2026">Base Set 2026</option>
-        
-        <option value="promo">Promo Cards</option>
-        
-      </select>
-      <label for="card-search">Search</label>
-      <input id="card-search" type="search" placeholder="Name, card #, or code" autocomplete="off">
+    <div class="pillars">
+      
+      <article class="pillar">
+        <h3>Pot of Greed</h3>
+        <p>Not a serious card, as well as being strictly better than most other options.</p>
+      </article>
+      
     </div>
-
-    <div class="set-description" id="set-description"></div>
-    <div class="gallery-grid" id="gallery-grid" aria-live="polite"></div>
   </section>
 </main>
-
-<div class="modal" id="card-modal" aria-hidden="true" role="dialog" aria-label="Card preview">
-  <button class="modal__close" id="card-modal-close" aria-label="Close card preview">Close</button>
-  <div class="card-view">
-    <div class="card-view__media">
-      <img id="card-modal-image" alt="Expanded card preview">
-    </div>
-    <aside class="card-view__details">
-      <p class="eyebrow">Card Data</p>
-      <h3 id="card-modal-title"></h3>
-      <p id="card-modal-subtitle" class="card-view__subtitle"></p>
-      <p><strong>Type:</strong> <span id="card-modal-type"></span></p>
-      <p><strong>Rarity:</strong> <span id="card-modal-rarity"></span></p>
-      <div id="card-modal-text" class="card-view__text"></div>
-      <button class="card-view__close" id="card-modal-close-bottom" type="button">Close</button>
-    </aside>
-  </div>
-</div>
-
-<script id="sets-json" type="application/json">
-[{"id":"base-set-2026","name":"Base Set 2026","path":"sets/Base Set 2026/fronts","tsv":"sets/Base Set 2026/Base Set 2026.tsv","total_cards":57,"code_prefix":"","code_padding":2,"description":"The foundational release of Super Benji TCG, featuring iconic characters, rival forces, and key locations from Benji Island."},{"id":"promo","name":"Promo Cards","path":"sets/Promo/fronts","tsv":"sets/Promo/Promo.tsv","total_cards":1,"code_prefix":"P","code_padding":2,"description":"Special promotional cards released that are not part of a set."}]
-</script>
 
 
     <section class="site-discord section section--highlight" aria-label="Official Discord server">
