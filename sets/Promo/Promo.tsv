@@ -1,2 +1,3 @@
 Copies	Nickname	card_background	cardname	cardtype	cardtypeimage	cardimage	cardimage style	cardtext	card number	set name	rarity
 1	PROMO - Pot of Greed	PotofGreed-OW.png	Pot of Greed	Unique Action - Slow	actionLogo.png	-	{outlineStyle:none} {boxShadow:none}	Draw 3 cards.---*"I summon Pot of Greed to draw 3 additional cards from my deck!"*	1/1	PROMO	Banned
+1	PROMO - Dr. Banana, Evil Mastermind Japanese Alt Art	Banana Alt Art.png	悪の天才 ドクター・バナナ	ユニーク・キャラクター — バナナ・ヴィラン	VAction.png	-	{outlineStyle:none} {boxShadow:none}	アクション：{icons/VAction.png} {icons/VAction.png} {icons/QuestionAction.png} / {icons/VAction.png} {icons/VAction.png} {icons/VAction.png}×:「強盗」 — この方法で支払った {icons/VAction.png}3つにつき、 / カードを1枚引く。	PROMO	BS26	スペシャルイラスト
