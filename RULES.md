@@ -7,7 +7,7 @@ published: false
 ## Objective
 
 Reduce your opponent’s Health to 0\.  
-Each player starts with 20 Health. If a player must draw a card and cannot, they lose the game.
+Each player starts with 30 Health. If a player must draw a card and cannot, they lose the game.
 
 ## Deck Construction
 
@@ -28,7 +28,7 @@ Ready all exhausted cards. Characters generate Actions and add them to your Acti
 
 ### Draw Phase
 
-Draw 1 card.
+Draw 3 cards.
 
 ### Main Phase
 
@@ -103,7 +103,7 @@ All unspent Actions are lost at the end of each turn and cannot be carried over.
 ## 1\. Objective
 
 **1.1** A player wins the game when their opponent’s Health is reduced to 0 or less.  
-**1.2** Each player begins the game with 20 Health.  
+**1.2** Each player begins the game with 30 Health.  
 **1.3** If a player is required to draw a card and cannot, that player loses the game.
 
 ## 2\. Deck Construction
@@ -133,7 +133,7 @@ Each turn proceeds in the following order:
 
 ### 4.2 Draw Phase
 
-**4.2.1** The active player draws 1 card.
+**4.2.1** The active player draws 3 cards.
 
 ### 4.3 Main Phase
 
